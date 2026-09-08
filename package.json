@@ -1,0 +1,35 @@
+{
+  "name": "sanityguy-portfolio",
+  "version": "1.0.0",
+  "description": "SanityGuy personal portfolio",
+  "keywords": [
+    "portfolio",
+    "development",
+    "studios"
+  ],
+  "homepage": "https://github.com/SanityGuy/my-portfolio#readme",
+  "bugs": {
+    "url": "https://github.com/SanityGuy/my-portfolio/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SanityGuy/my-portfolio.git"
+  },
+  "license": "MIT",
+  "author": "SanityGuy",
+  "type": "commonjs",
+  "main": "index.html",
+  "scripts": {
+    "build:css": "tailwindcss -i ./styles/style.css -o ./dist/output.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.5.1": true
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.3.3"
+  }
+}

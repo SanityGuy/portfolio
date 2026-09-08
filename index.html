@@ -1,226 +1,328 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOUYAN_M // SYSTEM_CORE</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
-
-
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Souyan's software development portfolio." />
+    <meta name="theme-color" content="#0b84ff" />
+    <title>Souyan | Software Developer</title>
     
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500;700&display=swap');
+    <link rel="icon" type="image/png" href="assets/icon/favicon-32x32.png" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="dist/output.css" />
 
-        :root { --primary: #020202; --accent: #ff0000; --text: #e0e0e0; }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </head>
+  <body class="bg-brand-lightBg dark:bg-brand-darkBg text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 overflow-x-hidden selection:bg-blue-500 selection:text-white">
+    
+    <div class="noise-bg fixed inset-0 z-50 pointer-events-none opacity-[0.03]" aria-hidden="true"></div>
+
+    <header class="site-header fixed top-0 left-0 right-0 z-40 py-3.5 px-4 sm:px-6">
+      <nav class="max-w-6xl mx-auto min-h-[60px] px-4 py-2 flex items-center justify-between gap-4 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-lg">
+        <a class="flex items-center gap-2.5 text-lg font-bold tracking-tight" href="#hero">
+          <div class="w-7 h-7 rounded-full overflow-hidden bg-blue-500/10 flex items-center justify-center" aria-hidden="true">
+            <i class="fa-solid fa-user text-xl text-blue-500 sm:text-xl"></i>
+          </div>
+          <span>Souyan<span class="text-blue-500">Dev</span></span>
+        </a>
         
-        body { 
-            background-color: var(--primary); 
-            color: var(--text); 
-            font-family: 'Fira Code', monospace; 
-            overflow-x: hidden; 
-        }
-
-        canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.12; }
-
-        .terminal-cursor::after {
-            content: '_';
-            animation: blink 1s infinite;
-            color: var(--accent);
-        }
-
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        .project-card {
-            background: rgba(10, 10, 10, 0.8);
-            border: 1px solid #1a1a1a;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card:hover { border-color: var(--accent); box-shadow: 0 0 20px rgba(255, 0, 0, 0.1); }
-
-        .nav-link { cursor: pointer; transition: color 0.3s; }
-        .nav-link:hover { color: var(--accent); }
-
-        .scanline {
-            width: 100%; height: 2px; background: rgba(255, 0, 0, 0.1);
-            position: fixed; top: 0; z-index: 10; pointer-events: none;
-            animation: scan 8s linear infinite;
-        }
-        @keyframes scan { 0% { top: -10%; } 100% { top: 110%; } }
-    </style>
-</head>
-<body>
-
-    <div class="scanline"></div>
-    <canvas id="matrix"></canvas>
-
-    <nav class="fixed w-full z-50 flex justify-between items-center p-6 mix-blend-difference border-b border-zinc-900 bg-black/50 backdrop-blur-md">
-        <div class="text-lg font-bold tracking-tighter nav-link" onclick="scrollToSection('#hero')">
-            <span class="text-red-600">ID:</span> SOUYAN_M
+        <div class="hidden md:flex items-center gap-1 ml-auto">
+          <a class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-blue-500/10 transition" href="#about">About</a>
+          <a class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-blue-500/10 transition" href="#projects">Projects</a>
+          <a class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-blue-500/10 transition" href="#contact">Contact</a>
         </div>
-        <div class="flex space-x-6 text-[10px] uppercase tracking-widest">
-            <span onclick="scrollToSection('#about')" class="nav-link">01_ABOUT</span>
-            <span onclick="scrollToSection('#work')" class="nav-link">02_PROJECTS</span>
-            <span onclick="scrollToSection('#contact')" class="nav-link">03_CONTACT</span>
-        </div>
-    </nav>
 
-    <section id="hero" class="h-screen flex flex-col justify-center px-10 md:px-32">
-        <p class="text-red-600 mb-2 text-xs opacity-70">// AUTHENTICATED_SESSION_ACTIVE</p>
-        <h1 class="text-5xl md:text-8xl font-bold mb-6 tracking-tighter" id="hero-title"></h1>
-        <p class="max-w-2xl text-zinc-500 text-sm md:text-base leading-relaxed" id="hero-desc"></p>
-        <div class="mt-10 flex gap-6">
-            <button onclick="scrollToSection('#work')" class="border border-red-600 px-6 py-2 text-xs hover:bg-red-600 transition-all">VIEW_PROJECTS</button>
-            <button onclick="scrollToSection('#about')" class="text-zinc-500 text-xs hover:text-white transition-all underline decoration-red-600">LEARN_MORE</button>
+        <div class="flex items-center gap-2">
+          <button class="w-10 h-10 border border-slate-200 dark:border-white/10 rounded-xl flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-blue-500/10 hover:rotate-12 transition duration-200" id="theme-toggle" type="button" aria-label="Switch theme">
+            <span class="theme-icon text-sm">☾</span>
+          </button>
+          
+          <a class="inline-flex items-center gap-2 px-3.5 py-2 border border-blue-500/30 rounded-xl bg-blue-500/10 text-slate-900 dark:text-white text-xs font-semibold hover:bg-blue-500 hover:text-white transition shadow-sm" href="https://github.com/SanityGuy" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github text-sm text-blue-500"></i>
+            <span class="hidden sm:inline">View GitHub</span>
+            <span class="text-xs opacity-70">↗</span>
+          </a>
         </div>
-    </section>
+      </nav>
+    </header>
 
-    <section id="about" class="min-h-screen py-32 px-10 md:px-32">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
-            <div>
-                <h2 class="text-3xl font-bold mb-8 text-red-600 terminal-cursor" id="about-head"></h2>
-                <p class="text-zinc-400 text-sm leading-7" id="about-text"></p>
+    <main class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <section id="hero" class="min-h-[90vh] grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center pt-32 sm:pt-36 pb-16">
+        
+        <div class="hero-copy lg:col-span-7 flex flex-col justify-center">
+          <div id="experience" class="availability-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-slate-900/60 text-xs font-semibold text-slate-600 dark:text-slate-400 w-fit mb-6 shadow-sm">
+            2+ YEARS OF EXPERIENCE
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08]">
+            I build <span class="text-blue-500">software that ships.</span>
+          </h1>
+
+          <p class="hero-description text-slate-600 dark:text-slate-400 text-base sm:text-md leading-relaxed mt-6 max-w-xl">
+            Student developer focused on fullstack web applications, database management, and application development. I emphasize clean structure, performance, and long term maintainability.
+          </p>
+
+          <div class="hero-actions flex flex-wrap items-center gap-3.5 mt-8">
+            <a class="h-12 px-6 rounded-xl font-semibold text-sm text-slate-800 bg-white border border-blue-500 dark:bg-slate-900 dark:text-slate-100 hover:shadow-lg hover:shadow-blue-500/25 transition duration-200 flex items-center justify-center gap-2" href="#projects">
+              Explore my work <i class="fa-solid fa-layer-group text-xs"></i>
+            </a>
+            <a class="h-12 px-6 rounded-xl font-semibold text-sm text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-blue-500 transition duration-200 flex items-center justify-center gap-2" href="https://github.com/SanityGuy" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-github text-blue-500"></i> View GitHub Profile
+            </a>
+          </div>
+
+          <div class="hero-stats flex items-center gap-8 sm:gap-12 mt-12 pt-8 border-t border-slate-200/80 dark:border-white/10">
+            <div class="flex flex-col">
+              <strong class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">07+</strong>
+              <span class="text-[11px] font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1">Active Projects</span>
             </div>
-            <div class="border border-zinc-800 p-8 bg-zinc-950/50">
-                <p class="text-[10px] text-zinc-600 mb-4 font-bold">// SYSTEM_SPECS</p>
-                <ul class="space-y-4 text-xs">
-                    <li><span class="text-red-600">[CLASS]</span> SOFTWARE_ENGINEER</li>
-                    <li><span class="text-red-600">[SKILL]</span> JAVA / PYTHON / C++ / EXCEL </li>
-                    <li><span class="text-red-600">[LANGS]</span> RU / EN / ID / MY</li>
-                    <li><span class="text-red-600">[STATUS]</span> REQUEST GATE OPEN</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="work" class="py-32 px-10 md:px-32">
-        <h2 class="text-3xl font-bold mb-16 terminal-cursor" id="work-head"></h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
             
-            <div class="project-card p-10 group">
-                <p class="text-red-600 text-[10px] mb-2">// PROJECT_01</p>
-                <h3 class="text-xl font-bold mb-4 group-hover:text-red-600 transition-colors">ZULU SPIGOT DEVELOPMENT</h3>
-                <p class="text-zinc-500 text-xs leading-relaxed mb-6">Built a custom Spigot plugin ecosystem for Minecraft servers, featuring advanced permission control, localized command handling, and optimized event-driven runtime logic for seamless multiplayer performance.</p>
-                <div class="flex gap-4 opacity-50 text-[10px]">
-                    <span>#JAVA</span> <span>#DEVELOPMENT</span> <span>#API</span>
-                </div>
+            <div class="flex flex-col">
+              <strong class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">05</strong>
+              <span class="text-[11px] font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1">Core Languages</span>
             </div>
-
-            <div class="project-card p-10 group">
-                <p class="text-red-600 text-[10px] mb-2">// PROJECT_02</p>
-                <h3 class="text-xl font-bold mb-4 group-hover:text-red-600 transition-colors">PROFESSIONAL STORE WEBSITE</h3>
-                <p class="text-zinc-500 text-xs leading-relaxed mb-6">Designed and deployed a responsive ecommerce frontend with secure checkout flow, backend inventory automation, and custom payment integration to streamline sales and order management.</p>
-                <div class="flex gap-4 opacity-50 text-[10px]">
-                    <span>#WEB</span> <span>#Ecommerce</span> <span>#PAYMENTS</span>
-                </div>
+            
+            <div class="flex flex-col">
+              <strong class="text-4xl sm:text-5xl font-black tracking-tight text-blue-500 leading-none -mt-1 sm:-mt-2">∞</strong>
+              <span class="text-[11px] font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1">To Build</span>
             </div>
-
-            <div class="project-card p-10 group">
-                <p class="text-red-600 text-[10px] mb-2">// PROJECT_03</p>
-                <h3 class="text-xl font-bold mb-4 group-hover:text-red-600 transition-colors">INTEGRATED WEBHOOK BASED CHAT</h3>
-                <p class="text-zinc-500 text-xs leading-relaxed mb-6">Implemented webhook-based chat integration for real-time communication, automated message routing, and extensible bot commands across collaborative platforms.</p>
-                <div class="flex gap-4 opacity-50 text-[10px]">
-                    <span>#WEB</span> <span>#CHAT</span> <span>#INTEGRATION</span>
-                </div>
-            </div>
-
-            <div class="project-card p-10 group">
-                <p class="text-red-600 text-[10px] mb-2">// PROJECT_04</p>
-                <h3 class="text-xl font-bold mb-4 group-hover:text-red-600 transition-colors">PYTHON CALCULATOR</h3>
-                <p class="text-zinc-500 text-xs leading-relaxed mb-6">Developed a feature-rich Python calculator with a clean GUI, supporting basic arithmetic operations, scientific functions, and customizable themes.</p>
-                <div class="flex gap-4 opacity-50 text-[10px]">
-                    <span>#PYTHON</span> <span>#GUI</span> <span>#MATH</span>
-                </div>
-            </div>
-
-            <div class="col-span-full flex justify-center mt-12">
-                <a href="https://github.com/SanityGuy" target="_blank" rel="noopener" class="group inline-flex items-center space-x-2 border border-zinc-800 hover:border-red-600 px-6 py-3 text-sm uppercase tracking-wider font-bold text-zinc-400 hover:text-red-400 transition-all">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                    </svg>
-                    <span>View My Github</span>
-                </a>
-            </div>
-
+          </div>
         </div>
-    </section>
 
-    <section id="contact" class="h-screen flex flex-col justify-center items-center text-center">
-        <h2 class="text-4xl md:text-6xl font-bold mb-8 terminal-cursor" id="contact-head"></h2>
-        <div class="space-y-4">
-            <p class="text-zinc-600 text-xs mb-10">AWAITING_INPUT...</p>
-<a href="mailto:shark.mazumder@gmail.com" class="block border-b-2 border-red-600 text-xl md:text-3xl hover:bg-red-600 hover:text-black transition-all px-4 py-2 mb-6">shark.mazumder@gmail.com</a>
-<div class="flex flex-wrap justify-center gap-4 max-w-md mx-auto">
+        <div class="hero-visual lg:col-span-5 relative flex items-center justify-center min-h-[360px] sm:min-h-[420px]" aria-hidden="true">
+          <div class="absolute w-14 h-14 rounded-full right-[10%] top-[10%] bg-gradient-to-br from-blue-500 to-indigo-600 shadow-[0_0_35px_rgba(11,132,255,0.5)] animate-float-reverse"></div>
+          
+          <div class="absolute w-[340px] sm:w-[400px] h-[160px] sm:h-[180px] border border-blue-500/30 rounded-full -rotate-[22deg] opacity-50 pointer-events-none"></div>
+          <div class="absolute w-[400px] sm:w-[460px] h-[200px] sm:h-[230px] border border-indigo-500/20 rounded-full rotate-[55deg] opacity-30 pointer-events-none"></div>
 
-    <a href="https://instagram.com/sanityguy88" class="group flex items-center space-x-2 border border-red-600 hover:bg-red-600/10 px-6 py-2 text-sm uppercase tracking-wider font-bold text-zinc-300 hover:text-red-200 transition-all" target="_blank" rel="noopener">
-        <svg class="w-4 h-4 text-pink-400 group-hover:text-pink-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        <span>@sanityguy88</span>
-    </a>
-    <a href="https://t.me/souyanka404" class="group flex items-center space-x-2 border border-red-600 hover:bg-red-600/10 px-6 py-2 text-sm uppercase tracking-wider font-bold text-zinc-300 hover:text-red-200 transition-all ml-4" target="_blank" rel="noopener">
-        <svg class="w-4 h-4 text-red-400 group-hover:text-red-300" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-        <span>@souyanka404</span>
-    </a>
-</div>
+          <div class="relative z-10 w-full max-w-sm sm:max-w-md rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-2xl overflow-hidden rotate-1 sm:rotate-2 transition hover:rotate-0 duration-300">
+            <div class="h-10 px-4 border-b border-slate-200/80 dark:border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+              <div class="flex gap-1.5">
+                <i class="w-2.5 h-2.5 rounded-full bg-slate-400/40"></i>
+                <i class="w-2.5 h-2.5 rounded-full bg-slate-400/40"></i>
+                <i class="w-2.5 h-2.5 rounded-full bg-slate-400/40"></i>
+              </div>
+              <span>souyan.ts</span>
+            </div>
+            <pre class="p-5 text-xs sm:text-sm font-mono leading-relaxed text-slate-700 dark:text-slate-300 overflow-x-auto"><span class="text-purple-500 dark:text-purple-400">const</span> developer = {
+  <span class="text-blue-500 dark:text-blue-400">name</span>: <span class="text-emerald-500 dark:text-emerald-400">"Souyan"</span>,
+  <span class="text-blue-500 dark:text-blue-400">focus</span>: [
+    <span class="text-emerald-500 dark:text-emerald-400">"Full Stack Web"</span>, 
+    <span class="text-emerald-500 dark:text-emerald-400">"Database Management"</span>, 
+    <span class="text-emerald-500 dark:text-emerald-400">"Application Development"</span>
+  ],
+  <span class="text-blue-500 dark:text-blue-400">status</span>: [<span class="text-emerald-500 dark:text-emerald-400">"Building"</span>, <span class="text-emerald-500 dark:text-emerald-400">"Learning"</span>]
+};</pre>
+          </div>
 
+          <div class="absolute top-[12%] left-[2%] z-20 px-3.5 py-1.5 rounded-full border border-slate-200/80 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 text-xs font-mono backdrop-blur-md shadow-lg animate-float-slow"><i class="fa-brands fa-js text-yellow-400 mr-1"></i> JavaScript</div>
+          <div class="absolute bottom-[18%] right-[0%] z-20 px-3.5 py-1.5 rounded-full border border-slate-200/80 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 text-xs font-mono backdrop-blur-md shadow-lg animate-float-reverse"><i class="fa-brands fa-java text-red-500 mr-1"></i> Java</div>
+          <div class="absolute bottom-[8%] left-[8%] z-20 px-3.5 py-1.5 rounded-full border border-slate-200/80 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 text-xs font-mono backdrop-blur-md shadow-lg animate-float-mid"><i class="fa-brands fa-react text-blue-500 mr-1"></i> React</div>
         </div>
-    </section>
 
-    <script>
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        const chars = "0101010101010101ABCDEF";
-        const fontSize = 12;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
-        function drawMatrix() {
-            ctx.fillStyle = "rgba(2, 2, 2, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#600";
-            ctx.font = fontSize + "px 'Fira Code'";
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars[Math.floor(Math.random() * chars.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setInterval(drawMatrix, 50);
+      </section>
 
-        gsap.registerPlugin(ScrollTrigger, TextPlugin);
+      <section id="about" class="py-20 sm:py-28 border-t border-slate-200/80 dark:border-white/10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
+          <div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">Curious by default.<br /><span class="text-slate-500 dark:text-slate-400">Focused on structure.</span></h2>
+          </div>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-sm">Driven by designing reliable, scalable systems and refining user experience through clean code.</p>
+        </div>
 
-        function scrollToSection(id) {
-            gsap.to(window, { duration: 1.5, scrollTo: id, ease: "power4.inOut" });
-        }
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+          <div class="space-y-5 text-slate-600 dark:text-slate-400 text-base sm:text-md leading-relaxed reveal">
+            <p>I am a software developer focused on software building, interface design, and system management. My work spans custom web platforms, microserver infrastructure, desktop tools, and utility software.</p>
+            <p>I emphasize basic software engineering practices: clean code separation, readable design patterns, efficient backend management, and thoughtful user interfaces.</p>
+            
+            <p class="pt-3">
+              Technologies:
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-full border border-blue-500 dark:border-blue-500 bg-white dark:bg-slate-900 text-xs font-mono text-slate-700 dark:text-slate-300"><i class="fa-brands fa-js text-yellow-400 dark:text-yellow-500 mr-1"></i> JavaScript</span>
+              <span class="px-3 py-1.5 rounded-full border border-blue-500 dark:border-blue-500 bg-white dark:bg-slate-900 text-xs font-mono text-slate-700 dark:text-slate-300"><span class="text-blue-500 font-bold mr-1">TS</span> TypeScript</span>
+              <span class="px-3 py-1.5 rounded-full border border-blue-500 dark:border-blue-500 bg-white dark:bg-slate-900 text-xs font-mono text-slate-700 dark:text-slate-300"><i class="fa-brands fa-java text-red-500 mr-1"></i> Java</span>
+              <span class="px-3 py-1.5 rounded-full border border-blue-500 dark:border-blue-500 bg-white dark:bg-slate-900 text-xs font-mono text-slate-700 dark:text-slate-300"><i class="fa-brands fa-python text-blue-500 mr-1"></i> Python</span>
+              <span class="px-3 py-1.5 rounded-full border border-blue-500 dark:border-blue-500 bg-white dark:bg-slate-900 text-xs font-mono text-slate-700 dark:text-slate-300"><i class="fa-brands fa-react text-cyan-400 mr-1"></i> React</span>
+              <span class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 text-xs font-mono text-slate-700 dark:text-slate-300"><i class="fa-brands fa-html5 text-orange-500 mr-1"></i> HTML / <i class="fa-brands fa-css3-alt text-blue-500 mx-1"></i>CSS</span>
+              <span class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 text-xs font-mono text-slate-700 dark:text-slate-300"><i class="fa-solid fa-database text-blue-400 mr-1"></i> SQLite</span>
+              <span class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 text-xs font-mono text-slate-700 dark:text-slate-300"><i class="fa-brands fa-git-alt text-orange-600 mr-1"></i> Git</span>
+              <span class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 text-xs font-mono text-slate-700 dark:text-slate-300"><i class="fa-brands fa-node-js text-green-500 mr-1"></i> NodeJS</span>
+              <span class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 text-xs font-mono text-slate-700 dark:text-slate-300"><i class="fa-brands fa-golang text-cyan-500 mr-1"></i> Go</span>
+              <span class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 text-xs font-mono text-slate-700 dark:text-slate-300"><img src="/assets/ru.png" class="w-4 h-4 inline-block mr-2 text-purple-500" alt="RuLang">RuLang</span>
+            </div>
+          </div>
 
-        window.addEventListener('load', () => {
-            gsap.to("#hero-title", { duration: 2, text: "SOUYAN_M", ease: "none" });
-            gsap.to("#hero-desc", { duration: 3, delay: 1, text: "Lead Software Engineer specializing in backend architecture and technical localization. I build the systems that bridge the gap between human intent and machine execution.", ease: "none" });
-        });
+          <div class="rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-xl overflow-hidden reveal">
+            <div class="p-6 border-b border-slate-200/80 dark:border-white/10 flex gap-4">
+              <span class="font-medium text-md font-bold text-blue-500">01</span>
+              <div>
+                <strong class="text-base font-bold text-slate-900 dark:text-white">Purpose Driven Architecture</strong>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Software should solve clear problems and operate efficiently.</p>
+              </div>
+            </div>
+            
+            <div class="p-6 border-b border-slate-200/80 dark:border-white/10 flex gap-4">
+              <span class="font-medium text-md font-bold text-blue-500">02</span>
+              <div>
+                <strong class="text-base font-bold text-slate-900 dark:text-white">Continuous Refinement</strong>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Iterative refactoring and maintenance are mandatory to strong architecture.</p>
+              </div>
+            </div>
 
-        const typingSections = [
-            { id: "#about-head", text: "> WHO_AM_I?" },
-            { id: "#about-text", text: "I am a developer and linguistic strategist based in Indonesia. I don't just write code; I design scalable logic. I don't just translate text; I adapt context. Whether it's a Java-based Minecraft plugin or high-level technical documentation, I ensure the final output is precise and optimized." },
-            { id: "#work-head", text: "> PROJECT_ARCHIVE" },
-            { id: "#contact-head", text: "> ESTABLISH_COMM_LINK" }
-        ];
+            <div class="p-6 flex gap-4">
+              <span class="font-medium text-md font-bold text-blue-500">03</span>
+              <div>
+                <strong class="text-base font-bold text-slate-900 dark:text-white">Intuitive UX</strong>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Robust engineering works hand-in-hand with clear beautiful user experience.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        typingSections.forEach(section => {
-            gsap.to(section.id, {
-                text: section.text,
-                duration: section.text.length * 0.02,
-                scrollTrigger: {
-                    trigger: section.id,
-                    start: "top 85%",
-                    toggleActions: "play none none none"
-                }
-            });
-        });
+      <section id="projects" class="py-20 sm:py-28 border-t border-slate-200/80 dark:border-white/10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
+          <div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">Featured Projects</h2>
+          </div>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-sm">A selection of web platforms, mobile applications, and software utilities.</p>
+        </div>
 
-    </script>
-</body>
+        <div class="project-grid grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <article class="project-card group relative flex flex-col justify-between p-7 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl hover:-translate-y-1.5 transition-all duration-300 hover:border-blue-500/50 hover:shadow-2xl overflow-hidden">
+            <div>
+              <h3 class="text-xl font-bold tracking-tight mb-2 group-hover:text-blue-500 transition">
+                <span class="text-blue-400">Ru</span>Lang
+              </h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">An open-source programming language project inspired by <a href="https://github.com/arwildo/jawascript" target="_blank" rel="noopener noreferrer" class="inline-block font-medium text-blue-500">Arwildo (JawaScript)</a> built around Russian JS syntax, translation, and a custom development workflow.</p>
+              <p class="pt-4 text-slate-600 dark:text-slate-400 text-sm font-medium leading-relaxed">
+                Languages used:
+              </p>
+              <div class="flex flex-wrap gap-1.5 mt-6">
+                <span class="px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-800/50 text-[11px] font-mono text-slate-600 dark:text-slate-300"><i class="fa-brands fa-js text-yellow-400 mr-1"></i> JavaScript</span>
+                <span class="px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-800/50 text-[11px] font-mono text-slate-600 dark:text-slate-300"><i class="fa-brands fa-node-js text-green-500 mr-1"></i> Node.js</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-6 mt-6 border-t border-slate-200/80 dark:border-white/10">
+              <span class="font-medium text-xs text-slate-500">Programming Language</span>
+              <a href="https://github.com/SanityGuy/rulang" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-500 font-mono text-xs font-semibold hover:bg-blue-500 hover:text-white transition">
+                <i class="fa-brands fa-github"></i> View Source
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card group relative flex flex-col justify-between p-7 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl hover:-translate-y-1.5 transition-all duration-300 hover:border-blue-500/50 hover:shadow-2xl overflow-hidden">
+            <div>
+              <h3 class="text-xl font-bold tracking-tight mb-2 group-hover:text-blue-500 transition">
+                Emcapture
+              </h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">A mobile application designed around organizing and preserving personal information through a focused, modern interface.</p>
+              <p class="pt-4 text-slate-600 dark:text-slate-400 text-sm font-medium leading-relaxed">
+                Languages used:
+              </p>
+              <div class="flex flex-wrap gap-1.5 mt-6">
+                <span class="px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-800/50 text-[11px] font-mono text-slate-600 dark:text-slate-300"><i class="fa-brands fa-react text-yellow-400 mr-1"></i> React Native</span>
+                <span class="px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-800/50 text-[11px] font-mono text-slate-600 dark:text-slate-300"><span class="text-blue-500 font-bold mr-1">TS</span> TypeScript</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-6 mt-6 border-t border-slate-200/80 dark:border-white/10">
+              <span class="font-medium text-xs text-slate-500">Mobile Application</span>
+              <a href="https://github.com/SanityGuy/emcapture" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-500 font-mono text-xs font-semibold hover:bg-blue-500 hover:text-white transition">
+                <i class="fa-brands fa-github"></i> View Source
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card group relative flex flex-col justify-between p-7 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl hover:-translate-y-1.5 transition-all duration-300 hover:border-blue-500/50 hover:shadow-2xl overflow-hidden">
+            <div>
+              <h3 class="text-xl font-bold tracking-tight mb-2 group-hover:text-blue-500 transition">
+                TKSkor <span class="text-slate-600 font-medium text-xl">/</span> TKScore
+              </h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">A web application for calculating TKA/TKAD-based academic scores with validation, localization, and responsive UI.</p>
+              <p class="pt-4 text-slate-600 dark:text-slate-400 text-sm font-medium leading-relaxed">
+                Languages used:
+              </p>
+              <div class="flex flex-wrap gap-1.5 mt-6">
+                <span class="px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-800/50 text-[11px] font-mono text-slate-600 dark:text-slate-300"><i class="fa-brands fa-react text-yellow-400 mr-1"></i> React Vite</span>
+                <span class="px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-800/50 text-[11px] font-mono text-slate-600 dark:text-slate-300"><span class="text-blue-500 font-bold mr-1">TS</span> TypeScript</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-6 mt-6 border-t border-slate-200/80 dark:border-white/10">
+              <span class="font-medium text-xs text-slate-500">Web Application</span>
+              <div class="inline-flex items-center gap-2 px-2 py-1.5">
+                <a href="https://tkskor.my.id" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-500 font-mono text-xs font-semibold hover:bg-blue-500 hover:text-white transition">
+                <i class="fa-solid fa-globe"></i> View Web
+              </a>
+              <p class="text-slate-500 text-md inline-flex">/</p>
+              <a href="https://github.com/SanityGuy/tkskor" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-500 font-mono text-xs font-semibold hover:bg-blue-500 hover:text-white transition">
+                <i class="fa-brands fa-github"></i> View Source
+              </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card group relative flex flex-col justify-between p-7 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl hover:-translate-y-1.5 transition-all duration-300 hover:border-blue-500/50 hover:shadow-2xl overflow-hidden">
+            <div>
+              <h3 class="text-xl font-bold tracking-tight mb-2 group-hover:text-blue-500 transition">
+                Sky<span class="text-blue-400">Flix</span>
+              </h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">An aviation media platform for discovering, indexing, and watching aviation videos through a clean, modern interface.</p>
+              <p class="pt-4 text-slate-600 dark:text-slate-400 text-sm font-medium leading-relaxed">
+                Languages used:
+              </p>
+              <div class="flex flex-wrap gap-1.5 mt-6">
+                <span class="px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-800/50 text-[11px] font-mono text-slate-600 dark:text-slate-300"><i class="fa-brands fa-react text-yellow-400 mr-1"></i> React</span>
+                <span class="px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-800/50 text-[11px] font-mono text-slate-600 dark:text-slate-300"><span class="text-blue-500 font-bold mr-1">TS</span> TypeScript</span>
+                <span class="px-2.5 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-800/50 text-[11px] font-mono text-slate-600 dark:text-slate-300"><i class="fa-brands fa-node-js text-green-500 mr-1"></i> Node.js</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-6 mt-6 border-t border-slate-200/80 dark:border-white/10">
+              <span class="font-medium text-xs text-slate-500">Web Application</span>
+              <a href="https://github.com/SanityGuy/skyflix" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-500 font-mono text-xs font-semibold hover:bg-blue-500 hover:text-white transition">
+                <i class="fa-brands fa-github"></i> View Source
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="py-20 sm:py-28 border-t border-slate-200/80 dark:border-white/10">
+        <div class="relative overflow-hidden p-8 sm:p-14 lg:p-20 rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-2xl text-center reveal">
+          
+          <div class="relative z-10">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">Let's build something<br /><span class="gradient-text">worth shipping.</span></h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed mt-4 max-w-lg mx-auto">Open for software projects, collaborations, or technical inquiries. Reach out directly.</p>
+            
+            <div class="flex flex-wrap items-center justify-center gap-3.5 mt-8">
+              <a class="h-12 px-6 rounded-xl font-semibold text-sm text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-blue-500 transition duration-200 flex items-center justify-center gap-2" href="mailto:souyan.zakharov@gmail.com">
+                <i class="fa-solid fa-envelope"></i> Email Me
+              </a>
+              <a class="h-12 px-6 rounded-xl font-semibold text-sm text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-blue-500 transition duration-200 flex items-center justify-center gap-2" href="https://github.com/SanityGuy" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github text-blue-500"></i> View GitHub Profile
+              </a>
+              <a class="h-12 px-6 rounded-xl font-semibold text-sm text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-blue-500 transition duration-200 flex items-center justify-center gap-2" href="https://t.me/souyanka404" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-telegram text-blue-500"></i> Telegram
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="max-w-6xl mx-auto px-4 sm:px-6 py-8 border-t border-slate-200/80 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500 uppercase tracking-wider">
+      <span>© <span id="year"></span> Souyan</span>
+      <span>Built with intent & clarity.</span>
+    </footer>
+  </body>
 </html>
