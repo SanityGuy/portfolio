@@ -1,48 +1,43 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'class',
+  darkMode: "class",
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,tsx}",
+    "./src/App.tsx",
+    "./postcss.config.js",
+  ],
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#2196F3',
-          light: '#64B5F6',
-          dark: '#1976D2'
+        brand: {
+          accent: "#0b84ff",
+          accent2: "#5b5cff",
+          darkBg: "#070a0f",
+          lightBg: "#f4f7fb",
         },
-        secondary: {
-          DEFAULT: '#FF5722',
-          light: '#FF8A65',
-          dark: '#E64A19'
-        }
       },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            color: theme('colors.gray.700'),
-            a: {
-              color: theme('colors.primary.DEFAULT'),
-              '&:hover': {
-                color: theme('colors.primary.dark'),
-              },
-            },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
+      },
+      animation: {
+        "float-slow": "float 4.4s ease-in-out infinite",
+        "float-reverse": "float 5.2s ease-in-out infinite reverse",
+        "float-mid": "float 4.8s ease-in-out infinite",
+        "pulse-fast": "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": {
+            transform: "translateY(0px) scale(1)",
+          },
+          "50%": {
+            transform: "translateY(-14px) scale(1.02)",
           },
         },
-        invert: {
-          css: {
-            color: theme('colors.gray.300'),
-            a: {
-              color: theme('colors.primary.light'),
-              '&:hover': {
-                color: theme('colors.primary.DEFAULT'),
-              },
-            },
-          },
-        },
-      }),
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [],
 };
