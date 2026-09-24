@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function MainLayout() {
   return (
@@ -14,18 +15,8 @@ export default function MainLayout() {
       <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <Outlet />
       </main>
-
-      <footer className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-slate-200/80 px-4 py-8 text-center text-xs font-medium tracking-wider text-slate-500 dark:border-white/10 sm:flex-row sm:px-6 sm:text-left">
-        <span>
-          © {new Date().getFullYear()} SouyanDev
-        </span>
-
-        <span>Always ready to give my clients the best service.</span>
-
-        <span>
-          Built with <i className="fa-solid fa-heart text-brand-accent" /> & clarity.
-        </span>
-      </footer>
+      
+      <Footer />
     </div>
   );
 }

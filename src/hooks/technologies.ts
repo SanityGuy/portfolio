@@ -1,53 +1,66 @@
+import { 
+  faJs as JavaScript,
+  faTypescript as TypeScript,
+  faJava as Java,
+  faPython as Python,
+  faReact as React,
+  faHtml5 as HTML,
+  faGitAlt as Git,
+  faNodeJs as NodeJS,
+  faGolang as Go
+} from "@fortawesome/free-brands-svg-icons";
+
+import { faDatabase as SQLite } from "@fortawesome/free-solid-svg-icons";
+
 export const technologies = [
   {
     name: "JavaScript",
-    icon: "fa-brands fa-js",
+    icon: JavaScript,
     color: "text-yellow-400",
   },
   {
     name: "TypeScript",
-    icon: null,
-    prefix: "TS",
+    icon: TypeScript,
     color: "text-brand-accent",
   },
   {
     name: "Java",
-    icon: "fa-brands fa-java",
+    icon: Java,
     color: "text-red-500",
   },
   {
     name: "Python",
-    icon: "fa-brands fa-python",
+    icon: Python,
     color: "text-blue-500",
   },
   {
     name: "React",
-    icon: "fa-brands fa-react",
+    icon: React,
     color: "text-cyan-400",
   },
   {
     name: "HTML / CSS",
-    icon: "fa-brands fa-html5",
+    icon: HTML,
     color: "text-orange-500",
   },
   {
     name: "SQLite",
-    icon: "fa-solid fa-database",
+    icon: SQLite,
     color: "text-blue-400",
   },
   {
     name: "Git",
-    icon: "fa-brands fa-git-alt",
+    icon: Git,
     color: "text-orange-600",
   },
   {
     name: "NodeJS",
-    icon: "fa-brands fa-node-js",
+    icon: NodeJS,
     color: "text-green-500",
   },
   {
     name: "Go",
-    icon: "fa-brands fa-golang",
+    icon: Go,
     color: "text-cyan-500",
   },
 ];

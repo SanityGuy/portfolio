@@ -1,4 +1,9 @@
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { Sun, Moon } from "lucide-react";
+
+import logoUrl from "/android-chrome-192x192.png";
 
 const navigation = [
   { label: "About", href: "#about" },
@@ -61,7 +66,7 @@ export default function NavBar() {
             className="flex h-7 w-7 items-center justify-center overflow-hidden rounded-full bg-brand-accent/10"
             aria-hidden="true"
           >
-            <i className="fa-solid fa-user text-xl text-brand-accent sm:text-xl" />
+            <img src={logoUrl} alt="Souyan" className="h-full w-full" />
           </span>
 
           <span>
@@ -89,11 +94,11 @@ export default function NavBar() {
             aria-label={darkMode ? "Switch to light theme" : "Switch to dark theme"}
             className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-700 transition duration-200 hover:rotate-12 hover:bg-brand-accent/10 dark:border-white/10 dark:text-slate-200"
           >
-            <i
-              className={`fa-solid ${
-                darkMode ? "fa-sun" : "fa-moon"
-              } text-sm`}
-            />
+            {darkMode ? (
+              <Sun size={20} className="text-slate-400" />
+            ) : (
+              <Moon size={20} className="text-slate-700" />
+            )}
           </button>
 
           <a
@@ -102,7 +107,7 @@ export default function NavBar() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl border border-brand-accent/30 bg-brand-accent/10 px-3.5 py-2 text-xs font-semibold text-slate-900 shadow-sm transition hover:bg-brand-accent hover:text-white dark:text-white"
           >
-            <i className="fa-brands fa-github text-sm text-brand-accent" />
+            <FontAwesomeIcon icon={faGithub} size={"xl"} className="text-brand-accent" />
 
             <span className="hidden sm:inline">View GitHub</span>
 

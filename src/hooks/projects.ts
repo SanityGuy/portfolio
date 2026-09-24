@@ -1,3 +1,10 @@
+import { 
+  faReact,
+  faNodeJs,
+  faJs,
+  faTypescript
+} from "@fortawesome/free-brands-svg-icons";
+
 export const projects = [
   {
     name: "RuLang",
@@ -7,12 +14,12 @@ export const projects = [
     languages: [
       {
         name: "JavaScript",
-        icon: "fa-brands fa-js",
+        icon: faJs,
         color: "text-yellow-400",
       },
       {
         name: "Node.js",
-        icon: "fa-brands fa-node-js",
+        icon: faNodeJs,
         color: "text-green-500",
       },
     ],
@@ -28,12 +35,12 @@ export const projects = [
     languages: [
       {
         name: "React Native",
-        icon: "fa-brands fa-react",
+        icon: faReact,
         color: "text-cyan-400",
       },
       {
         name: "TypeScript",
-        icon: null,
+        icon: faTypescript,
         prefix: "TS",
         color: "text-brand-accent",
       },
@@ -48,12 +55,12 @@ export const projects = [
     languages: [
       {
         name: "React Vite",
-        icon: "fa-brands fa-react",
+        icon: faReact,
         color: "text-cyan-400",
       },
       {
         name: "TypeScript",
-        icon: null,
+        icon: faTypescript,
         prefix: "TS",
         color: "text-brand-accent",
       },
@@ -69,18 +76,18 @@ export const projects = [
     languages: [
       {
         name: "React",
-        icon: "fa-brands fa-react",
+        icon: faReact,
         color: "text-cyan-400",
       },
       {
         name: "TypeScript",
-        icon: null,
+        icon: faTypescript,
         prefix: "TS",
         color: "text-brand-accent",
       },
       {
         name: "Node.js",
-        icon: "fa-brands fa-node-js",
+        icon: faNodeJs,
         color: "text-green-500",
       },
     ],
