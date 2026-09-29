@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, ExternalLink } from "lucide-react";
 
 import logoUrl from "/android-chrome-192x192.png";
 
@@ -65,7 +65,7 @@ export default function NavBar() {
           className="flex min-w-0 shrink-0 items-center gap-2.5 text-base font-bold tracking-tight sm:text-lg"
         >
           <span
-            className="flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-accent/10"
+            className="flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-accent/10 border-2 border-brand-accent/30 dark:bg-brand-accent/10 dark:border-brand-accent/30"
             aria-hidden="true"
           >
             <img
@@ -113,17 +113,17 @@ export default function NavBar() {
             href="https://github.com/SanityGuy"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10 items-center gap-2 rounded-xl border border-brand-accent/30 bg-brand-accent/10 px-3 text-xs font-semibold text-slate-900 shadow-sm transition hover:bg-brand-accent hover:text-white dark:text-white sm:px-3.5"
+            className="group inline-flex h-10 items-center gap-2 rounded-xl border border-brand-accent/30 bg-brand-accent/10 px-3 text-xs font-semibold text-slate-900 shadow-sm transition hover:bg-brand-accent hover:text-white dark:text-white sm:px-3.5"
           >
             <FontAwesomeIcon
               icon={faGithub}
               size="xl"
-              className="text-brand-accent"
+              className="text-brand-accent dark:text-brand-accent transition-colors group-hover:text-white"
             />
 
             <span className="hidden sm:inline">View GitHub</span>
 
-            <span className="text-xs opacity-70">↗</span>
+            <ExternalLink size={16} className="transition-colors group-hover:text-white" />
           </a>
         </div>
       </nav>

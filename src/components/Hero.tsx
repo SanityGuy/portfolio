@@ -2,7 +2,7 @@ import RepoCount from "../hooks/repos";
 import CodeCard from "./CodeCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { Layers, Hourglass, Infinity } from "lucide-react";
+import { Layers, Clock, Infinity } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -13,7 +13,7 @@ export default function Hero() {
       >
         <div className="flex flex-col justify-center lg:col-span-7">
           <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-slate-200 bg-white/60 px-3.5 py-1.5 text-xs font-semibold text-slate-600 shadow-sm dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-400">
-            <Hourglass size={16} className="shrink-0 text-brand-accent" />
+            <Clock size={16} className="shrink-0 text-brand-accent" />
             <span>2+ YEARS OF EXPERIENCE</span>
           </div>
 

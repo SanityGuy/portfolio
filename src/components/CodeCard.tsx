@@ -14,9 +14,9 @@ export default function CodeCard() {
           <div className="relative z-10 w-[calc(100%-2rem)] max-w-sm rotate-1 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/70 shadow-2xl backdrop-blur-xl transition duration-300 hover:rotate-0 dark:border-white/10 dark:bg-slate-900/70 sm:w-full sm:max-w-md sm:rotate-2">
             <div className="flex h-10 items-center justify-between border-b border-slate-200/80 px-4 font-mono text-xs text-slate-400 dark:border-white/10">
               <div className="flex gap-1.5">
-                <i className="h-2.5 w-2.5 rounded-full bg-slate-400/40" />
-                <i className="h-2.5 w-2.5 rounded-full bg-slate-400/40" />
-                <i className="h-2.5 w-2.5 rounded-full bg-slate-400/40" />
+                <i className="h-2.5 w-2.5 rounded-full bg-red-400/60" />
+                <i className="h-2.5 w-2.5 rounded-full bg-yellow-400/60" />
+                <i className="h-2.5 w-2.5 rounded-full bg-green-400/60" />
               </div>
 
               <span>souyan.ts</span>

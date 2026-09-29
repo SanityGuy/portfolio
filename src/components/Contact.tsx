@@ -2,7 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faGithub,
   faTelegram,
-  faGoogle
+  faGoogle,
+  faDiscord
 } from '@fortawesome/free-brands-svg-icons'
 
 export default function Contact() {
@@ -25,7 +26,7 @@ export default function Contact() {
               inquiries. Reach out directly.
             </p>
 
-            <div className="mt-8 flex flex-col items-stretch justify-center gap-3.5 sm:flex-row sm:flex-wrap sm:items-center">
+            <div className="mt-8 flex flex-col items-stretch justify-center gap-3.5 sm:flex-row sm:flex-wrap sm:items-center grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
               <a
                 href="mailto:souyan.zakharov@gmail.com"
                 className="flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 transition duration-200 hover:border-brand-accent dark:border-white/10 dark:bg-slate-900 dark:text-slate-100"
@@ -64,6 +65,20 @@ export default function Contact() {
                   className="text-brand-accent"
                 />
                 Telegram
+              </a>
+
+              <a
+                href="https://discord.gg/3w7k7u9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 transition duration-200 hover:border-brand-accent dark:border-white/10 dark:bg-slate-900 dark:text-slate-100"
+              >
+                <FontAwesomeIcon
+                  icon={faDiscord}
+                  size="xl"
+                  className="text-brand-accent"
+                />
+                Discord Server
               </a>
             </div>
 
