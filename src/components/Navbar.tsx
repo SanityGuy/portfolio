@@ -75,8 +75,8 @@ export default function NavBar() {
             />
           </span>
 
-          <span className="truncate">
-            Souyan<span className="text-brand-accent">Dev</span>
+          <span className="truncate font-semibold">
+            Souyan<span className="text-brand-accent font-extrabold">Dev</span>
           </span>
         </button>
 
