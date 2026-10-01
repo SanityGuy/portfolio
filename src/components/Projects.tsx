@@ -1,4 +1,5 @@
 import projects from "../hooks/projects";
+import { Globe, Code } from 'lucide-react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Projects() {
@@ -94,7 +95,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 rounded-lg border border-brand-accent/20 bg-brand-accent/10 px-3 py-1.5 text-xs font-semibold text-brand-accent transition hover:bg-brand-accent hover:text-white"
                       >
-                        <i className="fa-solid fa-globe" />
+                        <Globe size={14} className='shrink-0' />
                         View Web
                       </a>
 
@@ -110,7 +111,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-lg border border-brand-accent/20 bg-brand-accent/10 px-3 py-1.5 text-xs font-semibold text-brand-accent transition hover:bg-brand-accent hover:text-white"
                   >
-                    <i className="fa-brands fa-github" />
+                    <Code size={14} className='shrink-0' />
                     View Source
                   </a>
                 </div>
