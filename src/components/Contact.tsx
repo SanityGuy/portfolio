@@ -22,7 +22,7 @@ export default function Contact() {
             </h2>
 
             <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-slate-600 dark:text-slate-400 sm:text-base">
-              Open for software projects, collaborations, or technical
+              Open for software or simple projects, collaborations, or technical
               inquiries. Reach out directly.
             </p>
 
@@ -37,20 +37,6 @@ export default function Contact() {
                   className="text-brand-accent"
                 />
                 Email Me
-              </a>
-
-              <a
-                href="https://github.com/SanityGuy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 transition duration-200 hover:border-brand-accent dark:border-white/10 dark:bg-slate-900 dark:text-slate-100"
-              >
-                <FontAwesomeIcon
-                  icon={faGithub}
-                  size="xl"
-                  className="text-brand-accent"
-                />
-                View GitHub Profile
               </a>
 
               <a
@@ -80,6 +66,22 @@ export default function Contact() {
                 />
                 Discord Server
               </a>
+
+              <a
+                href="https://github.com/SanityGuy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 transition duration-200 hover:border-brand-accent dark:border-white/10 dark:bg-slate-900 dark:text-slate-100"
+              >
+                <FontAwesomeIcon
+                  icon={faGithub}
+                  size="xl"
+                  className="text-brand-accent"
+                />
+                View GitHub Profile
+              </a>
+
+
             </div>
 
             <hr className="mt-10 border-t border-slate-200/80 dark:border-white/10" />
