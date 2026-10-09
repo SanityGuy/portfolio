@@ -120,13 +120,11 @@ export default function Projects() {
             </article>
           ))}
 
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end lg:flex-col lg:items-start">
-            <div className="flex px-4 py-8 bg-white/70 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl dark:bg-slate-900/70">
-              <Link to="/projects" className="flex items-center justify-center gap-4 rounded-full border border-slate-200/80 bg-slate-100 px-5 py-3 font-mono text-[11px] text-slate-600 dark:border-white/10 dark:bg-slate-800/50 dark:text-slate-300">
-                <Code size={14} className='shrink-0' />
+          <div className="flex justify-center md:col-span-2">
+              <Link to="/projects" className="inline-flex items-center gap-2 rounded-full border border-brand-accent/30 bg-brand-accent/10 px-6 py-3 text-sm font-semibold text-brand-accent shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-accent hover:bg-brand-accent hover:text-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950">
+                <Code size={16} className="shrink-0" />
                 View All Projects
               </Link>
-            </div>
           </div>
         </div>
       </section>

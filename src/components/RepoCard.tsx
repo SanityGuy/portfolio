@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,6 +19,18 @@ const GITHUB_HEADERS = {
 
 const USERNAME = "SanityGuy";
 
+const formatNumber = (value: number) =>
+  new Intl.NumberFormat("en", {
+    notation: value >= 1000 ? "compact" : "standard",
+    maximumFractionDigits: 1,
+  }).format(value);
+
+
+const formatRepoName = (name: string) =>
+  name
+    .replace(/[-_]+/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+
 export function RepoCommits({ repoName }: { repoName: string }) {
   const [commits, setCommits] = useState<number | string>("…");
 
@@ -28,13 +41,16 @@ export function RepoCommits({ repoName }: { repoName: string }) {
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch commits");
         const link = res.headers.get("Link");
+
         if (link) {
           const match = link.match(/page=(\d+)>; rel="last"/);
+
           if (match) {
             setCommits(parseInt(match[1], 10));
             return;
           }
         }
+
         return res.json().then((data) => {
           setCommits(Array.isArray(data) ? data.length : "N/A");
         });
@@ -45,8 +61,14 @@ export function RepoCommits({ repoName }: { repoName: string }) {
   }, [repoName]);
 
   return (
-    <div className="flex items-center gap-1.5" title="Total Commits">
-      <FontAwesomeIcon icon={faCodeCommit} className="text-emerald-500 text-xs" />
+    <div
+      className="flex items-center gap-1.5"
+      title="Total Commits"
+    >
+      <FontAwesomeIcon
+        icon={faCodeCommit}
+        className="text-emerald-500 text-xs"
+      />
       <span>{commits}</span>
     </div>
   );
@@ -54,47 +76,68 @@ export function RepoCommits({ repoName }: { repoName: string }) {
 
 export function RepoCard({ repo }: { repo: Repository }) {
   return (
-    <div className="flex flex-col justify-between bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200">
+    <article className="group flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-800">
       <div>
-        <div className="flex items-center justify-between gap-2 mb-2">
-          <div className="flex items-center gap-2 overflow-hidden">
-            <FontAwesomeIcon icon={faBookBookmark} className="text-slate-400 text-xs shrink-0" />
-            <h3 className="font-semibold text-slate-800 dark:text-slate-100 truncate text-sm">
-              {repo.name}
-            </h3>
+        <div className="mb-4 flex items-start justify-between gap-3">
+          <div className="flex min-w-0 items-start gap-3">
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/50">
+              <FontAwesomeIcon
+                icon={faBookBookmark}
+                className="text-blue-600 dark:text-blue-400"
+              />
+            </div>
+
+            <div className="min-w-0">
+              <h3 className="truncate text-sm font-semibold text-slate-800 dark:text-slate-100">
+                {formatRepoName(repo.name)}
+              </h3>
+              <p className="mt-1 text-xs text-slate-400">
+                Public repository
+              </p>
+            </div>
           </div>
+
           <a
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-400 hover:text-blue-500 transition-colors"
+            className="shrink-0 rounded-md p-2 text-slate-400 transition-colors hover:bg-slate-100 hover:text-blue-500 dark:hover:bg-slate-800"
             title="View on GitHub"
+            aria-label={`View ${repo.name} on GitHub`}
           >
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-xs" />
+            <FontAwesomeIcon
+              icon={faArrowUpRightFromSquare}
+              className="text-xs"
+            />
           </a>
         </div>
 
-        <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-4 min-h-[2rem]">
+        <p className="mb-5 min-h-10 break-words text-sm leading-5 text-slate-500 dark:text-slate-400 line-clamp-2">
           {repo.description || "No description provided."}
         </p>
       </div>
 
-      <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-3 border-t border-slate-100 dark:border-slate-700">
-        <div className="flex items-center gap-1.5" title="Primary Language">
-          <FontAwesomeIcon icon={faCode} className="text-blue-500 text-xs" />
-          <span>{repo.language || "Plain"}</span>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1" title="Stars">
-            <FontAwesomeIcon icon={faStar} className="text-amber-400 text-xs" />
-            <span>{repo.stargazers_count}</span>
-          </div>
-
-          <RepoCommits repoName={repo.name} />
-        </div>
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="inline-flex items-center gap-1.5 rounded-md border border-blue-100 bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700 dark:border-blue-900 dark:bg-blue-950/50 dark:text-blue-300">
+          <FontAwesomeIcon icon={faCode} className="text-[10px]" />
+          {repo.language || "Plain"}
+        </span>
       </div>
-    </div>
+
+      <div className="mt-4 flex items-center justify-between gap-3 border-t border-slate-100 pt-4 text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
+        <div className="flex items-center gap-1.5" title="Stars">
+          <FontAwesomeIcon
+            icon={faStar}
+            className="text-amber-400"
+          />
+          <span className="font-medium">
+            {formatNumber(repo.stargazers_count)}
+          </span>
+        </div>
+
+        <RepoCommits repoName={repo.name} />
+      </div>
+    </article>
   );
 }
 
@@ -103,8 +146,12 @@ export function RepoCards() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-12 text-slate-500 gap-2">
-        <FontAwesomeIcon icon={faSpinner} spin className="text-xl" />
+      <div className="flex items-center justify-center gap-3 py-12 text-sm text-slate-500">
+        <FontAwesomeIcon
+          icon={faSpinner}
+          spin
+          className="text-lg text-blue-500"
+        />
         <span>Loading repositories…</span>
       </div>
     );
@@ -112,14 +159,24 @@ export function RepoCards() {
 
   if (error) {
     return (
-      <div className="p-4 text-center text-sm text-red-600 bg-red-50 rounded-lg border border-red-200">
+      <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-center text-sm text-red-600 dark:border-red-900 dark:bg-red-950/30 dark:text-red-400">
         {error}
       </div>
     );
   }
 
+  if (!repos.length) {
+    return (
+      <div className="rounded-xl border border-dashed border-slate-300 px-6 py-12 text-center dark:border-slate-700">
+        <p className="text-sm font-medium text-slate-700 dark:text-slate-200">
+          No repositories found.
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {repos.map((repo) => (
         <RepoCard key={repo.id} repo={repo} />
       ))}

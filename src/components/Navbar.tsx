@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Sun, Moon, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import logoUrl from "/android-chrome-192x192.png";
 
@@ -13,6 +14,9 @@ const navigation = [
 
 export default function NavBar() {
   const [darkMode, setDarkMode] = useState(true);
+  const hideNavigation = ["/contacts", "/projects"].includes(
+    window.location.pathname.replace(/\/$/, "")
+  );
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
@@ -59,7 +63,8 @@ export default function NavBar() {
   return (
     <header className="fixed left-0 right-0 top-0 z-40 px-3 py-3 sm:px-5 sm:py-3.5">
       <nav className="mx-auto flex min-h-[58px] max-w-6xl items-center justify-between gap-3 rounded-2xl border border-slate-200/80 bg-white/70 px-3 py-2 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/70 sm:min-h-[60px] sm:gap-4 sm:px-4">
-        <button
+        <Link
+          to="/"
           type="button"
           onClick={() => scrollToSection("#hero")}
           className="flex min-w-0 shrink-0 items-center gap-2.5 text-base font-bold tracking-tight sm:text-lg"
@@ -78,20 +83,22 @@ export default function NavBar() {
           <span className="truncate font-semibold">
             Souyan<span className="text-brand-accent font-extrabold">Dev</span>
           </span>
-        </button>
+        </Link>
 
-        <div className="ml-auto hidden items-center gap-1 md:flex">
-          {navigation.map((item) => (
-            <button
-              key={item.href}
-              type="button"
-              onClick={() => scrollToSection(item.href)}
-              className="rounded-xl px-3.5 py-2 text-xs font-semibold text-slate-600 transition hover:bg-brand-accent/10 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
+        {!hideNavigation && (
+          <div className="ml-auto hidden items-center gap-1 md:flex">
+            {navigation.map((item) => (
+              <button
+                key={item.href}
+                type="button"
+                onClick={() => scrollToSection(item.href)}
+                className="rounded-xl px-3.5 py-2 text-xs font-semibold text-slate-600 transition hover:bg-brand-accent/10 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <button

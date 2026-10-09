@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faArrowRight, faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { Layers, ArrowRightLeft, Sparkles } from "lucide-react";
+import { Layers, ArrowRightLeft, Handshake } from "lucide-react";
 import { RepoCard } from "../components/RepoCard";
 import { useRepos } from "../hooks/repos";
 
@@ -9,11 +10,11 @@ export default function Projects() {
   const { repos, loading, error } = useRepos();
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 md:px-8 lg:py-24">
+    <div className="mx-auto max-w-7xl px-4 py-28 sm:px-6 sm:py-28 md:px-8 lg:py-36 lg:px-0">
       <section className="flex flex-col items-start max-w-3xl">
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/60 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-600 shadow-sm dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-300">
-          <Sparkles size={14} className="text-brand-accent shrink-0" />
-          <span>Portfolio & Open Source</span>
+        <div className="mb-6 inline-flex w-fit uppercase items-center gap-2 rounded-full border border-slate-200 bg-white/60 px-3.5 py-1.5 text-xs font-semibold text-slate-600 shadow-sm dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-400">
+            <FontAwesomeIcon icon={faGithub} size="lg" className="shrink-0 text-brand-accent" />
+            <span>Portfolio & Open Source</span>
         </div>
 
         <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl leading-[1.1]">
@@ -74,19 +75,22 @@ export default function Projects() {
         <div className="max-w-xl">
           <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
             Let’s build something together.
+            <Handshake size={24} className="text-brand-accent inline-block ml-1" />
           </h3>
           <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
             Have a project idea, an open-source opportunity, or technical questions? I’m always open to discussing new software challenges.
           </p>
         </div>
 
-        <Link
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-8 mt-4 sm:mt-6">
+          <Link
           to="/contacts"
-          className="inline-flex h-12 items-center justify-center gap-2 px-6 bg-brand-accent hover:opacity-90 text-white font-semibold text-sm rounded-xl transition-all duration-200 shadow-md shadow-brand-accent/20 shrink-0 w-full sm:w-auto"
+          className="group ne-flex items-center gap-2 rounded-full border border-brand-accent/30 bg-brand-accent/10 px-6 py-3 text-sm font-semibold text-brand-accent shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-accent hover:bg-brand-accent hover:text-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950"
         >
           <span>Get in Touch</span>
-          <FontAwesomeIcon icon={faArrowRight} className="text-xs" />
+          <FontAwesomeIcon icon={faArrowRight} className="ml-1 text-xs transition-transform duration-200 group-hover:translate-x-1" />
         </Link>
+        </div>
       </section>
     </div>
   );
