@@ -1,13 +1,15 @@
-import RepoCount from "../hooks/repos";
+import { useRepoCount } from "../hooks/repos";
 import CodeCard from "./CodeCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Layers, Clock, Infinity } from "lucide-react";
 
 export default function Hero() {
+  const repoCount = useRepoCount();
+
   return (
     <>
-    <section
+      <section
         id="hero"
         className="grid min-h-[100vh] grid-cols-1 items-center gap-14 px-4 pb-16 pt-28 sm:gap-16 sm:px-6 sm:pb-20 sm:pt-32 md:px-8 lg:grid-cols-12 lg:gap-10 lg:px-0 lg:pb-24 lg:pt-36"
       >
@@ -57,7 +59,7 @@ export default function Hero() {
           <div className="mt-12 grid grid-cols-3 gap-5 border-t border-slate-200/80 pt-8 dark:border-white/10 sm:mt-14 sm:gap-8 md:max-w-lg">
             <div className="flex flex-col">
               <strong className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
-                <RepoCount />+
+                {repoCount !== null ? repoCount : "…"}
               </strong>
 
               <span className="mt-1 text-[10px] font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 sm:text-[11px]">
@@ -89,7 +91,6 @@ export default function Hero() {
         </div>
 
         <CodeCard />
-        
       </section>
     </>
   );
