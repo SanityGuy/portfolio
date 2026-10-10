@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faArrowRight, faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { Layers, ArrowRightLeft, Handshake } from "lucide-react";
+import { Layers, ArrowRightLeft, Handshake, FolderGit, Globe } from "lucide-react";
+import { projects } from "../hooks/projects";
 import { RepoCard } from "../components/RepoCard";
 import { useRepos } from "../hooks/repos";
 
@@ -31,10 +32,10 @@ export default function Projects() {
         <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl flex items-center gap-2">
-              <Layers size={20} className="text-brand-accent" />
+              <Layers size={24} className="text-brand-accent" />
               <span>GitHub Codebases</span>
             </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
               Automatically synchronized with GitHub API
             </p>
           </div>
@@ -69,6 +70,62 @@ export default function Projects() {
             </div>
           </div>
         )}
+      </section>
+
+      <section className="mt-12 sm:mt-16">
+        <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl flex items-center gap-2">
+          <FolderGit size={24} className="text-brand-accent" />
+          <span>My Top Projects</span>
+        </h2>
+        <p className="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">
+          A curated selection of my most impactful and innovative projects, showcasing my skills in fullstack development, database management, and software engineering.
+        </p>
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:gap-8">
+          {projects.map((project) => (
+            <div key={project.name} className="flex flex-col gap-3 p-5 bg-white/60 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm backdrop-blur-sm transition-all duration-200 hover:scale-[1.01] hover:shadow-lg">
+              <div className="flex items-center justify-between gap-2 p-4 rounded-xl">
+                <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">{project.name}</h3>
+                <div className="flex flex-row items-center gap-2">
+                  {project.languages.map((language) => (
+                    <span key={language.name} className="rounded-full border border-slate-200 bg-slate-100 px-2.5 py-1 font-mono text-[11px] text-slate-600 dark:border-white/10 dark:bg-slate-800/50 dark:text-slate-300">
+                      {language.icon ? (
+                        <FontAwesomeIcon
+                          icon={language.icon}
+                          size="lg"
+                          className={`${language.color} mr-1`}
+                        />
+                      ) : "prefix" in language ? (
+                        <span
+                          className={`${language.color} mr-1 font-bold`}
+                        >
+                          {language.prefix}
+                        </span>
+                      ) : null}
+
+                      {language.name}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex items-center gap-3">
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-brand-accent/20 bg-brand-accent/10 px-3 py-2 text-xs font-semibold text-brand-accent transition hover:bg-brand-accent hover:text-white">
+                      <FontAwesomeIcon icon={faGithub} size="lg" />
+                    </a>
+                  )}
+                  {project.website && (
+                    <a href={project.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-lg border border-brand-accent/20 bg-brand-accent/10 px-3 py-2 text-xs font-semibold text-brand-accent transition hover:bg-brand-accent hover:text-white">
+                      <Globe size={16} />
+                    </a>
+                  )}
+                </div>
+              </div>
+              <hr className="border-slate-200 dark:border-white/10" />
+              <div className="flex flex-col gap-1 bg-white/5 dark:bg-slate-900/5 p-4 rounded-xl">
+                <p className="mt-2 text-md leading-relaxed tracking-tight text-slate-600 dark:text-slate-400">{project.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="mt-16 sm:mt-20 md:mt-24 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 p-6 sm:p-8 md:p-10 bg-white/60 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm backdrop-blur-sm">
