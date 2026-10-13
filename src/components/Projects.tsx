@@ -1,259 +1,326 @@
 
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
-  ArrowUpRight,
-  Code2,
+  ArrowRight,
+  Code,
   ExternalLink,
-  FolderGit2,
   Globe,
-  Layers3,
+  Database,
 } from "lucide-react";
-import type { Project } from "../hooks/projects";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import projects from "../hooks/projects";
 
-function ScreenshotPreview({ project }: { project: Project }) {
-  const [failedImages, setFailedImages] = useState<string[]>([]);
+export default function Projects() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [motionReady, setMotionReady] = useState(false);
 
-  const screenshots = project.screenshots.filter(
-    (src) => !failedImages.includes(src),
-  );
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
 
-  const mainScreenshot = screenshots[0];
-  const secondaryScreenshot = screenshots[1];
+    const section = sectionRef.current;
+    if (!section || !("IntersectionObserver" in window)) return;
 
-  const handleImageError = (src: string) => {
-    setFailedImages((current) =>
-      current.includes(src) ? current : [...current, src],
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setMotionReady(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.01 },
     );
-  };
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const featuredProjects = projects.slice(0, 4);
 
   return (
-    <div className="relative mx-auto w-full max-w-xl px-2 py-8 sm:px-4 sm:py-10">
-      <div className="absolute inset-5 rounded-2xl border border-slate-200 bg-slate-100 dark:border-slate-800 dark:bg-slate-950" />
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="relative overflow-hidden border-t border-slate-200/80 px-4 py-20 dark:border-white/10 sm:px-6 sm:py-24 md:px-8 lg:px-0 lg:py-28"
+    >
+      <style>{`
+        .home-projects {
+          --home-project-accent: #60a5fa;
+          --home-project-line: rgba(148, 163, 184, .2);
+        }
 
-      <div className="relative [perspective:1400px]">
-        {secondaryScreenshot && (
-          <div className="absolute -right-1 -top-3 z-0 aspect-video w-[72%] overflow-hidden rounded-xl border border-slate-300 bg-white shadow-lg transition-transform duration-500 group-hover:translate-x-2 group-hover:-translate-y-2 dark:border-slate-700 dark:bg-slate-800 sm:-right-3 sm:-top-5">
-            <img
-              src={secondaryScreenshot}
-              alt={`${project.name} secondary preview`}
-              loading="lazy"
-              onError={() => handleImageError(secondaryScreenshot)}
-              className="h-full w-full object-cover object-top"
-            />
-          </div>
-        )}
+        .home-projects .home-project-card {
+          position: relative;
+          isolation: isolate;
+          transition:
+            transform .35s cubic-bezier(.2,.7,.2,1),
+            border-color .3s ease,
+            box-shadow .35s ease;
+        }
 
-        <div className="relative z-10 overflow-hidden rounded-xl border border-slate-300 bg-white shadow-2xl transition-transform duration-500 ease-out [transform:rotateY(-7deg)_rotateX(2deg)] group-hover:[transform:rotateY(0deg)_rotateX(0deg)] dark:border-slate-700 dark:bg-slate-900">
-          <div className="flex h-10 items-center gap-1.5 border-b border-slate-200 bg-slate-50 px-3 dark:border-slate-700 dark:bg-slate-800">
-            <span className="size-2.5 rounded-full bg-slate-300 dark:bg-slate-600" />
-            <span className="size-2.5 rounded-full bg-slate-300 dark:bg-slate-600" />
-            <span className="size-2.5 rounded-full bg-slate-300 dark:bg-slate-600" />
+        .home-projects .home-project-card:hover {
+          transform: translateY(-5px);
+          border-color: rgba(96, 165, 250, .48);
+          box-shadow: 0 22px 50px -32px rgba(59, 130, 246, .55);
+        }
 
-            <div className="ml-3 flex min-w-0 flex-1 items-center gap-2 rounded-md border border-slate-200 bg-white px-2 py-1 dark:border-slate-700 dark:bg-slate-900">
-              <Globe size={11} className="shrink-0 text-slate-400" />
-              <span className="truncate text-[10px] text-slate-400">
-                {project.website || project.github || project.name}
-              </span>
-            </div>
-          </div>
+        .home-projects .home-project-number {
+          display: grid;
+          width: 42px;
+          height: 42px;
+          place-items: center;
+          border: 1px solid rgba(148, 163, 184, .22);
+          border-radius: 12px;
+          color: var(--home-project-accent);
+          background: rgba(96, 165, 250, .07);
+          font-size: 12px;
+          font-weight: 750;
+          font-variant-numeric: tabular-nums;
+          transition: transform .3s ease, background .3s ease;
+        }
 
-          {mainScreenshot ? (
-            <img
-              src={mainScreenshot}
-              alt={`${project.name} screenshot`}
-              loading="lazy"
-              onError={() => handleImageError(mainScreenshot)}
-              className="aspect-[16/10] w-full bg-slate-100 object-cover object-top dark:bg-slate-950"
-            />
-          ) : (
-            <div className="flex aspect-[16/10] flex-col items-center justify-center gap-3 bg-slate-50 px-6 text-center dark:bg-slate-950">
-              <div className="flex size-14 items-center justify-center rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
-                <FolderGit2
-                  size={26}
-                  strokeWidth={1.5}
-                  className="text-brand-accent"
-                />
-              </div>
+        .home-projects .home-project-card:hover .home-project-number {
+          transform: rotate(-5deg);
+          background: rgba(96, 165, 250, .14);
+        }
 
-              <div>
-                <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">
-                  {project.name}
-                </p>
-                <p className="mt-1 text-xs text-slate-500">
-                  Project preview coming soon
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
+        .home-projects .home-project-title {
+          transition: color .25s ease;
+        }
 
-      {screenshots.length > 2 && (
-        <div className="relative z-10 mt-5 flex justify-center gap-2">
-          {screenshots.slice(2).map((src, index) => (
-            <div
-              key={src}
-              className="w-20 overflow-hidden rounded-lg border border-slate-200 shadow-sm dark:border-slate-700 sm:w-24"
-            >
-              <img
-                src={src}
-                alt={`${project.name} additional screenshot ${index + 3}`}
-                loading="lazy"
-                onError={() => handleImageError(src)}
-                className="aspect-video w-full object-cover object-top"
-              />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
+        .home-projects .home-project-card:hover .home-project-title {
+          color: var(--home-project-accent);
+        }
 
-function ProjectShowcase({
-  project,
-  index,
-}: {
-  project: Project;
-  index: number;
-}) {
-  const reversed = index % 2 === 1;
+        .home-projects .home-project-chip {
+          transition: border-color .2s ease, transform .2s ease;
+        }
 
-  return (
-    <article className="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-colors duration-300 hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700">
+        .home-projects .home-project-chip:hover {
+          transform: translateY(-2px);
+          border-color: rgba(96, 165, 250, .5);
+        }
+
+        .home-projects .home-project-arrow {
+          transition: transform .25s ease;
+        }
+
+        .home-projects a:hover .home-project-arrow {
+          transform: translate(2px, -2px);
+        }
+
+        .home-projects .home-project-reveal {
+          opacity: 1;
+          transform: none;
+        }
+
+        .home-projects.home-projects-animated .home-project-reveal {
+          animation: home-project-entrance .65s cubic-bezier(.2,.7,.2,1) both;
+        }
+
+        @keyframes home-project-entrance {
+          from { opacity: 0; transform: translateY(18px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .home-projects .home-project-heading-rule {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+
+        .home-projects.home-projects-animated .home-project-heading-rule {
+          animation: home-project-rule .7s ease both;
+        }
+
+        @keyframes home-project-rule {
+          from { transform: scaleX(0); }
+          to { transform: scaleX(1); }
+        }
+
+        .home-projects .home-project-cta-arrow {
+          transition: transform .25s ease;
+        }
+
+        .home-projects .home-project-cta:hover .home-project-cta-arrow {
+          transform: translateX(4px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .home-projects *,
+          .home-projects *::before,
+          .home-projects *::after {
+            animation: none !important;
+            transition: none !important;
+          }
+        }
+      `}</style>
+
       <div
-        className={`grid items-center gap-6 p-5 sm:gap-10 sm:p-8 lg:grid-cols-2 lg:gap-12 lg:p-10 ${
-          reversed ? "lg:[&>.project-copy]:order-2" : ""
+        className={`home-projects mx-auto max-w-6xl ${
+          motionReady ? "home-projects-animated" : ""
         }`}
       >
-        <div className="project-copy flex min-w-0 flex-col items-start">
-          <div className="mb-6 flex flex-wrap items-center gap-3">
-            <span className="font-mono text-xs font-semibold tracking-widest text-brand-accent">
-              {String(index + 1).padStart(2, "0")}
-            </span>
+        <div className="mb-12 flex flex-col justify-between gap-7 md:mb-14 md:flex-row md:items-end lg:mb-16">
+          <div className="home-project-reveal max-w-2xl">
+            <div className="mb-5 flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brand-accent">
+              <span className="h-px w-7 bg-brand-accent" />
+              <Database size={13} />
+              Selected work
+            </div>
 
-            <span className="h-px w-8 bg-slate-300 dark:bg-slate-700" />
-
-            <span className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              {project.category}
-            </span>
-          </div>
-
-          <h3 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-            {project.name}
-          </h3>
-
-          <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-400 sm:text-base">
-            {project.description}
-          </p>
-
-          {project.external && (
-            <a
-              href={project.external}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-accent transition hover:underline"
-            >
-              {project.externalLabel || "Related project"}
-              <ArrowUpRight size={15} />
-            </a>
-          )}
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {project.languages.map((language) => (
-              <span
-                key={language.name}
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
-              >
-                {language.icon ? (
-                  <FontAwesomeIcon
-                    icon={language.icon}
-                    className={language.color}
-                  />
-                ) : language.prefix ? (
-                  <span className={`${language.color} font-bold`}>
-                    {language.prefix}
-                  </span>
-                ) : (
-                  <Code2 size={13} />
-                )}
-
-                {language.name}
+            <h2 className="text-3xl font-extrabold leading-[1.08] tracking-[-0.05em] sm:text-4xl lg:text-6xl">
+              Ideas into
+              <span className="mt-1 block text-blue-500 dark:text-blue-400">
+                working software.
               </span>
+            </h2>
+
+            <div className="home-project-heading-rule mt-5 h-0.5 w-16 bg-brand-accent" />
+
+            <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-400 sm:text-base">
+              A selection of applications, platforms, and experiments built
+              with curiosity, thoughtful engineering, and a focus on solving
+              meaningful problems.
+            </p>
+          </div>
+        </div>
+
+        {featuredProjects.length > 0 ? (
+          <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2">
+            {featuredProjects.map((project, index) => (
+              <article
+                key={project.name}
+                className="home-project-card home-project-reveal flex min-w-0 flex-col rounded-2xl border border-slate-200/80 bg-white/80 p-5 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/60 sm:p-6 lg:p-7"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+
+                <div className="flex-1">
+                  <h3 className="home-project-title break-words text-xl font-bold tracking-tight sm:text-2xl">
+                    {project.name}
+                    <span className="ml-6 inline-flex max-w-[100%] items-center gap-2 rounded-full border border-slate-200/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-slate-500 dark:border-white/10 dark:text-slate-400">
+                      <Code size={14} className="text-blue-500" />
+                      <span className="truncate">{project.category}</span>
+                    </span>
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-400">
+                    {project.description}
+                    {project.external && (
+                      <>
+                        {" "}
+                        <a
+                          href={project.external}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 font-semibold text-brand-accent hover:underline"
+                        >
+                          {project.externalLabel || "Learn more"}
+                          <ExternalLink size={12} />
+                        </a>
+                      </>
+                    )}
+                  </p>
+
+                  <div className="mt-6">
+                    <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                      Stack & Technologies
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.languages.map((language) => (
+                        <span
+                          key={language.name}
+                          className="home-project-chip inline-flex items-center gap-1.5 rounded-lg border border-slate-200/80 bg-slate-50 px-2.5 py-1.5 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800/50 dark:text-slate-300"
+                        >
+                          {language.icon ? (
+                            <FontAwesomeIcon
+                              icon={language.icon}
+                              className={language.color}
+                            />
+                          ) : "prefix" in language ? (
+                            <span className={`${language.color} font-bold`}>
+                              {language.prefix}
+                            </span>
+                          ) : null}
+                          {language.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-7 flex flex-wrap items-center gap-2 border-t border-slate-200/80 pt-5 dark:border-white/10">
+                  {project.website && (
+                    <a
+                      href={project.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-brand-accent/25 bg-brand-accent/10 px-3.5 py-2 text-xs font-semibold text-brand-accent transition-colors hover:bg-brand-accent hover:text-white"
+                    >
+                      <Globe size={14} />
+                      Live website
+                      <ArrowRight
+                        size={13}
+                        className="home-project-arrow"
+                      />
+                    </a>
+                  )}
+
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-slate-200/80 px-3.5 py-2 text-xs font-semibold text-slate-700 transition-colors hover:border-brand-accent/40 hover:text-brand-accent dark:border-white/10 dark:text-slate-200"
+                    >
+                      <Code size={14} />
+                      Source code
+                      <ArrowRight
+                        size={13}
+                        className="home-project-arrow"
+                      />
+                    </a>
+                  )}
+                </div>
+              </article>
             ))}
-          </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 dark:focus-visible:ring-offset-slate-900"
+            <div
+              className="home-project-reveal flex flex-col justify-between gap-7 rounded-2xl border border-dashed border-slate-300/80 bg-slate-50/60 p-6 dark:border-white/15 dark:bg-white/[0.02] sm:p-7"
+              style={{ animationDelay: `${featuredProjects.length * 100}ms` }}
+            >
+              <div>
+                <h3 className="text-2xl font-bold tracking-tight">
+                  More than what you see here.
+                </h3>
+
+                <p className="mt-3 max-w-sm text-sm leading-7 text-slate-600 dark:text-slate-400">
+                  Explore the complete collection of projects, experiments,
+                  and source code.
+                </p>
+              </div>
+
+              <Link
+                to="/projects"
+                className="home-project-cta inline-flex min-h-11 w-fit items-center gap-3 rounded-lg border border-brand-accent/25 bg-brand-accent/10 px-4 py-3 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950"
               >
-                <FontAwesomeIcon icon={faGithub} />
-                Source Code
-                <ArrowUpRight size={15} />
-              </a>
-            )}
-
-            {project.website && (
-              <a
-                href={project.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-brand-accent hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent dark:border-slate-700 dark:text-slate-200"
-              >
-                <ExternalLink size={15} />
-                Live Preview
-              </a>
-            )}
+                Explore all projects
+                <ArrowRight
+                  size={16}
+                  className="home-project-cta-arrow"
+                />
+              </Link>
+            </div>
           </div>
-        </div>
+        ) : (
+          <p className="rounded-xl border border-slate-200 p-6 text-sm text-slate-500 dark:border-white/10 dark:text-slate-400">
+            Projects will appear here once they have been added.
+          </p>
+        )}
 
-        <div className="min-w-0">
-          <ScreenshotPreview project={project} />
-        </div>
-      </div>
-    </article>
-  );
-}
-
-export default function ProjectShowcases({
-  projects,
-}: {
-  projects: Project[];
-}) {
-  return (
-    <section className="mt-16 sm:mt-20">
-      <div className="mb-10 max-w-2xl">
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
-          <Layers3 size={14} className="text-brand-accent" />
-          Selected Work
-        </div>
-
-        <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-          My Top Projects
-          <span className="text-brand-accent">.</span>
-        </h2>
-
-        <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-400 sm:text-base">
-          A closer look at the products, tools, and experiments I've built.
-          Each project represents a different approach to solving problems
-          through software.
-        </p>
-      </div>
-
-      <div className="space-y-8 sm:space-y-12">
-        {projects.map((project, index) => (
-          <ProjectShowcase
-            key={project.name}
-            project={project}
-            index={index}
-          />
-        ))}
       </div>
     </section>
   );

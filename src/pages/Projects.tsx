@@ -10,7 +10,6 @@ import {
   Layers,
   ArrowRightLeft,
   Handshake,
-  FolderGit,
 } from "lucide-react";
 import ProjectShowcases from "../components/ProjectShowcase";
 import projects from "../hooks/projects";
