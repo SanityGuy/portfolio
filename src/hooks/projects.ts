@@ -1,16 +1,38 @@
-import { 
+
+import {
   faReact,
   faNodeJs,
   faJs,
-  faTypescript
+  faTypescript,
 } from "@fortawesome/free-brands-svg-icons";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-export const projects = [
+export type ProjectLanguage = {
+  name: string;
+  icon?: IconDefinition;
+  color: string;
+  prefix?: string;
+};
+
+export type Project = {
+  name: string;
+  description: string;
+  category: string;
+  screenshots: string[];
+  languages: ProjectLanguage[];
+  github?: string;
+  website?: string;
+  external?: string;
+  externalLabel?: string;
+};
+
+export const projects: Project[] = [
   {
     name: "RuLang",
     description:
       "An open-source programming language project inspired by Arwildo (JawaScript), built around Russian JS syntax, translation, and a custom development workflow.",
     category: "Programming Language",
+    screenshots: [],
     languages: [
       {
         name: "JavaScript",
@@ -32,6 +54,7 @@ export const projects = [
     description:
       "A mobile application designed around organizing and preserving personal information through a focused, modern interface.",
     category: "Mobile Application",
+    screenshots: [],
     languages: [
       {
         name: "React Native",
@@ -52,6 +75,10 @@ export const projects = [
     description:
       "A web application for calculating TKA/TKAD-based academic scores with validation, localization, and responsive UI.",
     category: "Web Application",
+    screenshots: [
+      "/images/projects/tkskor-dashboard.webp",
+      "/images/projects/tkskor-results.webp",
+    ],
     languages: [
       {
         name: "React Vite",
@@ -73,6 +100,7 @@ export const projects = [
     description:
       "An aviation media platform for discovering, indexing, and watching aviation videos through a clean, modern interface.",
     category: "Web Application",
+    screenshots: [],
     languages: [
       {
         name: "React",
