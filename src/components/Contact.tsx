@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faGithub,
   faTelegram,
   faGoogle,
-  faDiscord
 } from '@fortawesome/free-brands-svg-icons';
-import { Mail } from "lucide-react";
+import { Mail, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -91,6 +90,14 @@ export default function Contact() {
             box-shadow: 0 16px 36px -20px rgba(59, 130, 246, .45);
           }
 
+          .home-contact .home-contact-cta-arrow {
+            transition: transform .25s ease;
+          }
+
+          .home-contact a:hover .home-contact-cta-arrow {
+            transform: translateX(4px);
+          }
+
           @media (prefers-reduced-motion: reduce) {
             .home-contact *,
             .home-contact *::before,
@@ -101,7 +108,7 @@ export default function Contact() {
           }
         `}</style>
 
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-7xl">
           <div className="home-contact-card relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-7 text-center shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/70 sm:p-12 md:p-14 lg:p-20 home-contact-reveal">
             <div className="relative z-10 flex flex-col items-center">
               <div className="mb-5 inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brand-accent">
@@ -123,10 +130,10 @@ export default function Contact() {
                 inquiries. Reach out directly.
               </p>
 
-              <div className="mt-8 grid w-full grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4 sm:justify-center">
+              <div className="mt-8 grid w-full max-w-md grid-cols-1 gap-3.5 sm:grid-cols-2">
                 <a
                   href="mailto:souyan.zakharov@gmail.com"
-                  className="home-contact-link flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 dark:border-white/10 dark:bg-slate-900 dark:text-slate-100"
+                  className="home-contact-link flex h-12 items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 dark:border-white/10 dark:bg-slate-900 dark:text-slate-100"
                 >
                   <FontAwesomeIcon
                     icon={faGoogle}
@@ -140,7 +147,7 @@ export default function Contact() {
                   href="https://t.me/souyanka404"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="home-contact-link flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 dark:border-white/10 dark:bg-slate-900 dark:text-slate-100"
+                  className="home-contact-link flex h-12 items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 dark:border-white/10 dark:bg-slate-900 dark:text-slate-100"
                 >
                   <FontAwesomeIcon
                     icon={faTelegram}
@@ -149,37 +156,23 @@ export default function Contact() {
                   />
                   Telegram
                 </a>
-
-                <a
-                  href="https://discord.gg/3w7k7u9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="home-contact-link flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 dark:border-white/10 dark:bg-slate-900 dark:text-slate-100"
-                >
-                  <FontAwesomeIcon
-                    icon={faDiscord}
-                    size="xl"
-                    className="text-brand-accent"
-                  />
-                  Discord Server
-                </a>
-
-                <a
-                  href="https://github.com/SanityGuy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="home-contact-link flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 dark:border-white/10 dark:bg-slate-900 dark:text-slate-100"
-                >
-                  <FontAwesomeIcon
-                    icon={faGithub}
-                    size="xl"
-                    className="text-brand-accent"
-                  />
-                  View GitHub Profile
-                </a>
               </div>
 
-              <hr className="mt-10 w-full border-t border-slate-200/80 dark:border-white/10" />
+              <hr className="mt-10 w-full max-w-xl border-t border-slate-200/80 dark:border-white/10" />
+
+              <div className="mt-8 flex w-full max-w-sm flex-col items-center gap-3">
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Or view more ways to contact me
+                </p>
+
+                <Link
+                  to="/contacts"
+                  className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-brand-accent/25 bg-brand-accent/10 px-5 text-sm font-semibold text-brand-accent transition hover:-translate-y-0.5 hover:bg-brand-accent hover:text-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950"
+                >
+                  Contact Page
+                  <ArrowRight size={15} className="home-contact-cta-arrow" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

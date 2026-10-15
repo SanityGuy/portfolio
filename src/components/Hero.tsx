@@ -3,7 +3,7 @@ import { useRepoCount } from "../hooks/repos";
 import CodeCard from "./CodeCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { Layers, Sparkles, Infinity } from "lucide-react";
+import { Layers, Home, Infinity } from "lucide-react";
 
 export default function Hero() {
   const repoCount = useRepoCount();
@@ -102,7 +102,7 @@ export default function Hero() {
         <div className="flex flex-col justify-center lg:col-span-7 home-hero-reveal">
           <div className="mb-5 flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brand-accent">
             <span className="h-px w-7 bg-brand-accent" />
-            <Sparkles size={13} />
+            <Home size={13} />
             2+ Years of Experience
           </div>
 
