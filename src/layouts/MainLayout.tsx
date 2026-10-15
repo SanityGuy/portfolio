@@ -1,5 +1,5 @@
 
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -14,6 +14,7 @@ export default function MainLayout() {
       <NavBar />
 
       <main className="mx-auto max-w-6xl">
+        <ScrollRestoration />
         <Outlet />
       </main>
 
