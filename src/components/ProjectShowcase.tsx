@@ -34,7 +34,7 @@ function ProjectGallery({ project }: { project: Project }) {
 
   return (
     <div className="min-w-0">
-      <div className="relative rounded-2xl border border-slate-200/80 bg-slate-50/80 p-1 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/80">
+      <div className="relative rounded-2xl border border-slate-200/80 p-2 bg-slate-50/80 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/80">
         <div className="absolute right-5 top-5 z-20 inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-white/90 px-3 py-1.5 text-xs font-semibold text-slate-600 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-slate-900/90 dark:text-slate-300">
           <ImageIcon size={13} className="text-brand-accent" />
           {availableScreenshots.length > 0

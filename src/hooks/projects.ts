@@ -33,9 +33,9 @@ export const projects: Project[] = [
       "An open-source programming language project inspired by Arwildo (JawaScript), built around Russian JS syntax, translation, and a custom development workflow.",
     category: "Programming Language",
     screenshots: [
-      'https://yavuzceliker.github.io/sample-images/image-1.jpg',
-      'https://yavuzceliker.github.io/sample-images/image-2.jpg',
-      'https://yavuzceliker.github.io/sample-images/image-3.jpg',
+      '/projects/rulang_1.png',
+      '/projects/rulang_2.png',
+      '/projects/rulang_3.png',
     ],
     languages: [
       {
@@ -59,9 +59,9 @@ export const projects: Project[] = [
       "A mobile application designed around organizing and preserving personal information through a focused, modern interface.",
     category: "Mobile Application",
     screenshots: [
-      'https://yavuzceliker.github.io/sample-images/image-4.jpg',
-      'https://yavuzceliker.github.io/sample-images/image-5.jpg',
-      'https://yavuzceliker.github.io/sample-images/image-6.jpg',
+      '/projects/emcapture_1.png',
+      '/projects/emcapture_2.png',
+      '/projects/emcapture_3.png',
     ],
     languages: [
       {
@@ -84,9 +84,9 @@ export const projects: Project[] = [
       "A web application for calculating TKA/TKAD-based academic scores with validation, localization, and responsive UI.",
     category: "Web Application",
     screenshots: [
-      "https://yavuzceliker.github.io/sample-images/image-7.jpg",
-      "https://yavuzceliker.github.io/sample-images/image-8.jpg",
-      "https://yavuzceliker.github.io/sample-images/image-9.jpg", 
+      '/projects/tkskor_1.png',
+      '/projects/tkskor_2.png',
+      '/projects/tkskor_3.png',
     ],
     languages: [
       {
@@ -110,9 +110,9 @@ export const projects: Project[] = [
       "An aviation media platform for discovering, indexing, and watching aviation videos through a clean, modern interface.",
     category: "Web Application",
     screenshots: [
-      "https://yavuzceliker.github.io/sample-images/image-10.jpg",
-      "https://yavuzceliker.github.io/sample-images/image-11.jpg",
-      "https://yavuzceliker.github.io/sample-images/image-12.jpg",
+      '/projects/skyflix_1.png',
+      '/projects/skyflix_2.png',
+      '/projects/skyflix_3.png',
     ],
     languages: [
       {

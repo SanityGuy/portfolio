@@ -63,9 +63,9 @@ export default function ContactPage() {
         },
         {
         name: "Discord Server",
-        handle: "SkyFlix Development",
+        handle: "SkyFlix Network",
         description: "Join our developer community server to hang out, share ideas, and build together.",
-        href: "https://discord.gg/3w7k7u9",
+        href: "https://discord.gg/EZ4XBunzYg",
         icon: <Users className="text-brand-accent" size={24} />,
         badge: "Community Hub",
         primary: false,
