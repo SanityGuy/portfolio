@@ -88,7 +88,7 @@ export default function CodeCard() {
               const
             </span>{" "}
             developer = {"{"}
-            {"\n  "}n 
+            {"\n  "}
 
             <span className="text-brand-accent">name</span>:{" "}
             <span className="text-emerald-500 dark:text-emerald-400">

@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faTelegram,
-  faGoogle,
-} from '@fortawesome/free-brands-svg-icons';
+import { faTelegram } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { Mail, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -133,10 +131,10 @@ export default function Contact() {
               <div className="mt-8 grid w-full max-w-md grid-cols-1 gap-3.5 sm:grid-cols-2">
                 <a
                   href="mailto:souyan.zakharov@gmail.com"
-                  className="home-contact-link flex h-12 items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 dark:border-white/10 dark:bg-slate-900 dark:text-slate-100"
+                  className="home-contact-link flex h-12 items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 dark:border-white/10 dark:bg-slate-900 dark:text-slate-100 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800"
                 >
                   <FontAwesomeIcon
-                    icon={faGoogle}
+                    icon={faEnvelope}
                     size="lg"
                     className="text-brand-accent"
                   />

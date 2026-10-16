@@ -6,8 +6,6 @@ import {
   ExternalLink,
   Globe,
   Database,
-  Terminal,
-  FolderGit2,
 } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import projects from "../hooks/projects";
@@ -209,7 +207,7 @@ export default function Projects() {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="mb-5 flex items-center justify-between gap-3 border-b border-slate-200/60 pb-4 dark:border-white/10">
-                  <span className="font-medium text-xs font-bold tracking-widest text-brand-accent">
+                  <span className="font-medium text-xs font-bold tracking-widest text-slate-400 dark:text-slate-500">
                     Project 0{index + 1}
                   </span>
 
