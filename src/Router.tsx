@@ -1,17 +1,25 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Secret from "./pages/Secret";
+
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
     children: [
-      {
-        path: "",
-        element: <Home />,
-      },
+      { index: true, element: <Home /> },
+      { path: "projects", element: <Projects /> },
+      { path: "contacts", element: <Contact /> },
+      { path: "*", element: <Home /> },
     ],
+  },
+  {
+    path: "/secret",
+    element: <Secret />,
   },
 ]);
 
