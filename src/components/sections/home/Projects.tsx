@@ -8,7 +8,7 @@ import {
   Database,
 } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import projects from "../hooks/projects";
+import projects from "../../../hooks/projects";
 
 export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null);

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import technologies from "../hooks/technologies";
-import principles from "../hooks/principles";
+import technologies from "../../../hooks/technologies";
+import principles from "../../../hooks/principles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Code2 } from "lucide-react";
 

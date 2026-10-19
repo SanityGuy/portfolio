@@ -8,7 +8,7 @@ import logoUrl from "/android-chrome-192x192.png";
 
 const navigation = [
   { label: "Projects", path: "/projects", hash: "#projects" },
-  { label: "Contact", path: "/contact", hash: "#contact" },
+  { label: "Contact", path: "/contacts", hash: "#contact" },
 ];
 
 export default function NavBar() {
