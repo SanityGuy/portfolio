@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTypescript, faJava, faReact } from "@fortawesome/free-brands-svg-icons";
+import { faTypescript, faJava, faLaravel } from "@fortawesome/free-brands-svg-icons";
 
 export default function CodeCard() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -149,11 +149,11 @@ export default function CodeCard() {
 
         <div className="home-codecard-badge animate-float-mid absolute bottom-[4%] left-[3%] z-20 rounded-full border border-slate-200/80 bg-white/80 px-2.5 py-1.5 font-mono text-[10px] shadow-lg backdrop-blur-md dark:border-white/10 dark:bg-slate-900/80 sm:bottom-[8%] sm:left-[8%] sm:px-3.5 sm:text-xs">
           <FontAwesomeIcon
-            icon={faReact}
+            icon={faLaravel}
             size="lg"
-            className="mr-1 text-cyan-400"
+            className="mr-1 text-red-400"
           />
-          React
+          Laravel
         </div>
       </div>
     </>

@@ -7,7 +7,9 @@ import {
   faHtml5 as HTML,
   faGitAlt as Git,
   faNodeJs as NodeJS,
-  faGolang as Go
+  faGolang as Go,
+  faLaravel as Laravel,
+  faPhp as PHP,
 } from "@fortawesome/free-brands-svg-icons";
 
 import { faDatabase as SQLite } from "@fortawesome/free-solid-svg-icons";
@@ -37,6 +39,16 @@ export const technologies = [
     name: "React",
     icon: React,
     color: "text-cyan-400",
+  },
+  {
+    name: "Laravel",
+    icon: Laravel,
+    color: "text-red-500",
+  },
+  {
+    name: "PHP",
+    icon: PHP,
+    color: "text-purple-200",
   },
   {
     name: "HTML / CSS",

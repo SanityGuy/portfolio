@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/secret",
+    path: "/washere",
     element: <Secret />,
   },
 ]);
