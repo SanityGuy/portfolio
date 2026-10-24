@@ -10,7 +10,7 @@ import {
   Image as ImageIcon,
   Layers3,
 } from "lucide-react";
-import type { Project } from "../hooks/projects";
+import type { Project } from "../../../hooks/projects";
 
 function ProjectGallery({ project }: { project: Project }) {
   const [failedImages, setFailedImages] = useState<string[]>([]);
