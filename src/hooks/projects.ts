@@ -4,6 +4,11 @@ import {
   faNodeJs,
   faJs,
   faTypescript,
+  faJava,
+  faLaravel,
+  faPhp,
+  faPython,
+  faDocker,
 } from "@fortawesome/free-brands-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
@@ -54,29 +59,28 @@ export const projects: Project[] = [
     externalLabel: "Arwildo (JawaScript)",
   },
   {
-    name: "Emcapture",
+    name: "Conclave",
     description:
-      "A mobile application designed around organizing and preserving personal information through a focused, modern interface.",
+      "A minecraft staff chat lightweight plugin to help server staff communicate with each other in-game without using external platforms.",
     category: "Mobile Application",
     screenshots: [
-      '/projects/emcapture_1.png',
-      '/projects/emcapture_2.png',
-      '/projects/emcapture_3.png',
+      '/projects/conclave_1.png',
+      '/projects/conclave_2.png',
+      '/projects/conclave_3.png',
     ],
     languages: [
       {
-        name: "React Native",
-        icon: faReact,
-        color: "text-cyan-400",
+        name: "Java",
+        icon: faJava,
+        color: "text-red-400",
       },
       {
-        name: "TypeScript",
-        icon: faTypescript,
-        prefix: "TS",
-        color: "text-brand-accent",
+        name: "Docker",
+        icon: faDocker,
+        color: "text-blue-400",
       },
     ],
-    github: "https://github.com/SanityGuy/emcapture",
+    github: "https://github.com/SanityGuy/conclave",
   },
   {
     name: "TKSkor / TKScore",
@@ -133,6 +137,49 @@ export const projects: Project[] = [
       },
     ],
     github: "https://github.com/SanityGuy/skyflix",
+  },
+  {
+    name: "SoLMS",
+    description: 
+     "A lightweight learning management system (LMS) for educational institutions, featuring course management, user roles, and progress tracking.",
+    category: "Web Application",
+    screenshots: [
+      '/projects/solms_1.png',
+      '/projects/solms_2.png',
+      '/projects/solms_3.png',
+    ],
+    languages: [
+      {
+        name: "PHP",
+        icon: faPhp,
+        color: "text-blue-600",
+      },
+      {
+        name: "Laravel",
+        icon: faLaravel,
+        color: "text-red-500",
+      },
+    ],
+    github: "https://github.com/SanityGuy/solms",
+  },
+  {
+    name: "SkyHelp",
+    description:
+      "A custom discord bot made using discord.py, designed to provide server management tools, moderation commands, and user engagement features for our SkyFlix Network Discord server.",
+    category: "Discord Application Bot",
+    screenshots: [
+      '/projects/skyhelp_1.png',
+      '/projects/skyhelp_2.png',
+      '/projects/skyhelp_3.png',
+    ],
+    languages: [
+      {
+        name: "Python",
+        icon: faPython,
+        color: "text-blue-500",
+      },
+    ],
+    github: "https://github.com/SanityGuy/skyhelp",
   },
 ];
 
