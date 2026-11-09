@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faGithub,
     faTelegram,
     faDiscord,
     faInstagram,
     faSnapchat,
+    faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 import {
     MessageCircle,
@@ -44,17 +44,26 @@ export default function ContactPage() {
 
     const contactChannels = [
         {
+        name: "WhatsApp",
+        description: "Quick messaging for casual conversations, project updates, and informal discussions.",
+        handle: "+62 822-2670-4091",
+        href: "https://wa.me/+6281234567890",
+        icon: <FontAwesomeIcon icon={faWhatsapp} className="text-green-500" size="xl" />,
+        badge: "Fastest Response",
+        primary: true,
+        },
+        {
         name: "Telegram",
         handle: "@souyanka404",
         description: "Fastest response for direct messaging, project inquiries, and quick chats.",
         href: "https://t.me/souyanka404",
         icon: <FontAwesomeIcon icon={faTelegram} className="text-sky-500" size="xl" />,
-        badge: "Fastest Response",
+        badge: "Secure Connection",
         primary: true,
         },
         {
         name: "Discord Direct",
-        handle: "pozynoj.shtorm",
+        handle: "souyandev",
         description: "Available for voice calls, detailed technical discussions, and code reviews.",
         href: "https://discord.com/users/pozynoj.shtorm",
         icon: <FontAwesomeIcon icon={faDiscord} className="text-indigo-500" size="xl" />,
@@ -68,15 +77,6 @@ export default function ContactPage() {
         href: "https://discord.gg/EZ4XBunzYg",
         icon: <Users className="text-brand-accent" size={24} />,
         badge: "Community Hub",
-        primary: false,
-        },
-        {
-        name: "GitHub",
-        handle: "SanityGuy",
-        description: "Check out my latest open-source repositories, activity, and project codebases.",
-        href: "https://github.com/SanityGuy",
-        icon: <FontAwesomeIcon icon={faGithub} className="text-slate-900 dark:text-white" size="xl" />,
-        badge: "Code & Projects",
         primary: false,
         },
         {
