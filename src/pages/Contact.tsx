@@ -46,8 +46,8 @@ export default function ContactPage() {
         {
         name: "WhatsApp",
         description: "Quick messaging for casual conversations, project updates, and informal discussions.",
-        handle: "+62 822-2670-4091",
-        href: "https://wa.me/+6281234567890",
+        handle: "+62 822-4138-2290",
+        href: "https://wa.me/+6282241382290",
         icon: <FontAwesomeIcon icon={faWhatsapp} className="text-green-500" size="xl" />,
         badge: "Fastest Response",
         primary: true,
