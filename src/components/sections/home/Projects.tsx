@@ -55,9 +55,6 @@ export default function Projects() {
       className="relative overflow-hidden border-t border-slate-200/80 px-4 py-20 dark:border-white/10 sm:px-6 sm:py-24 md:px-8 lg:px-0 lg:py-28"
     >
       <style>{`
-        .home-projects {
-          --home-project-accent: #60a5fa;
-        }
 
         .home-projects .spotlight-card {
           position: relative;
@@ -182,7 +179,7 @@ export default function Projects() {
 
             <h2 className="text-3xl font-extrabold leading-[1.08] tracking-[-0.05em] sm:text-4xl lg:text-6xl">
               Ideas into
-              <span className="mt-1 block text-blue-500 dark:text-blue-400">
+              <span className="mt-1 block text-blue-500">
                 working software.
               </span>
             </h2>

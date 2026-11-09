@@ -115,7 +115,7 @@ export default function About() {
                 Background & Stack
               </div>
 
-              <h2 className="text-3xl font-extrabold leading-[1.08] tracking-[-0.05em] sm:text-4xl lg:text-5xl">
+              <h2 className="text-3xl font-extrabold leading-[1.08] tracking-[-0.05em] sm:text-4xl lg:text-6xl">
                 Curious by default.
                 <span className="mt-1 block text-brand-accent">
                   Focused on structure.
